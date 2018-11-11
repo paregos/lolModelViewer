@@ -20,7 +20,6 @@ body {
 
 div{
   width: 100%;
-  height: 100%;
 }
 
 #canvas {
@@ -40,8 +39,22 @@ div{
   width: 100%;
   height: 768px;
   border: 1px solid black;
-
   padding: 0px;
+}
+
+#selectionFrameSearchBox{
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid black;
+  padding: 2px;
+}
+
+#selectObjectBox{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
 }
 
 
@@ -94,4 +107,50 @@ div{
   height: 200px !important;
   -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+
+.imageButton {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.imageSrc {
+  position: 'absolute';
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center 40%;
+}
+
+.imageBackdrop{
+  position: 'absolute';
+  left:0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.4,
+}
+
+.imageTitle {
+  position: relative;
+}
+
+.imageMarked {
+  height: 3;
+  width: 18;
+  background-color: white;
+  position: absolute;
+  bottom: -2;
+  left: 'calc(50% - 9px)';
+  transition: opacity;
 }

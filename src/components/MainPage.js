@@ -3,6 +3,25 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Typography from '@material-ui/core/Typography';
+
+var images = [
+    {
+        url: '/assets/Fizz_Circle_0.jpg',
+        mtlFile: 'fizz_base.mtl',
+        objFile: 'fizz_base.obj',
+        title: 'Fizz',
+        width: '100%',
+    },
+    {
+        url: '/assets/Fizz_Circle_1.jpg',
+        mtlFile: 'fizz_atlant.mtl',
+        objFile: 'fizz_atlant.obj',
+        title: 'Fizz1',
+        width: '100%',
+    }
+];
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -47,7 +66,22 @@ export default class MainPage extends React.Component {
                         <div id="canvas"></div> 
                     </Grid>
                     <Grid item xs={3}>
-                        <div id="selectionFrame"></div>
+                        <div id="selectionFrame">
+                            <Grid container spacing={24}>
+                                <Grid item xs={12}>
+                                    <div id="selectionFrameSearchBox">Blue</div>
+                                </Grid>
+                                {images.map(image => (
+                                    <Grid item xs={4}>
+                                        <ButtonBase focusRipple key={image.title} style={{width: image.width}}
+                                        onClick={() => addModel(image.mtlFile, image.objFile)}>
+                                            <img src={image.url} style={{width: image.width, padding: "3px"}}/>
+                                        <span/>
+                                        </ButtonBase>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </div>
                     </Grid>
                 </Grid>
             </div>

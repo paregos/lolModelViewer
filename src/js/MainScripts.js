@@ -1,7 +1,7 @@
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var currentObject;
+var currentObjectName = "CurrentObjectSingleton";
 var renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
 
 window.onload = initRenderer;
@@ -33,8 +33,8 @@ var ambientLight = new THREE.AmbientLight( 0xffffff, 1 );
 scene.add(ambientLight);
 
 //Initial call to add model
-var fizzMtl = 'fizz_atlant.mtl';
-var fizzObj = 'fizz_atlant.obj';
+var fizzMtl = 'fizz_base.mtl';
+var fizzObj = 'fizz_base.obj';
 addModel(fizzMtl, fizzObj);
 
 animate();
@@ -55,8 +55,11 @@ function initRenderer(){
 
 
 function addModel(mtlName, objName) {
-    if(currentObject){
-        removeEntity(currentObject);
+    console.log("In add model, mtl: "+mtlName+" objName: "+objName);
+
+    var selectedObject = scene.getObjectByName(currentObjectName);
+    if(selectedObject){
+        removeEntity(selectedObject);
     }
 
     var mtlLoader = new THREE.MTLLoader();
@@ -71,8 +74,9 @@ function addModel(mtlName, objName) {
     objLoader.setPath('/assets/');
     objLoader.load(objName, function (object) {
  
+        object.name = currentObjectName;
         //Reference to object added, used to remove before adding objects
-        currentObject = object;
+        // currentObject = object;
         scene.add(object);
         object.position.y -= 60;
  
