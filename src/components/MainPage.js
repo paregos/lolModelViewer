@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -35,8 +39,17 @@ export default class MainPage extends React.Component {
     } else {
         return (
             <div>
-                <div id="logBox">Blue</div>
-                <div id="canvas"></div> 
+                <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                        <div id="logBox">Blue</div>
+                    </Grid>
+                    <Grid item xs={9}>
+                        <div id="canvas"></div> 
+                    </Grid>
+                    <Grid item xs={3}>
+                        <div id="selectionFrame"></div>
+                    </Grid>
+                </Grid>
             </div>
         )
     }
